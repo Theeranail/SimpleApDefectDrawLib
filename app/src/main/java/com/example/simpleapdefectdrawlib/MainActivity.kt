@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
         setContentView(R.layout.activity_main)
 
         //how to use Option 1
-//        defectDraw.imagePath =
-//            "https://www.banidea.com/wp-content/uploads/2012/04/lower-floor-plan.jpg"
-//        defectDraw.onDefectDrawListener = this
-//        defectDraw.initViewImage();
+        defectDraw.imagePath =
+            "https://www.banidea.com/wp-content/uploads/2012/04/lower-floor-plan.jpg"
+        defectDraw.onDefectDrawListener = this
+        defectDraw.initViewImage();
 
         //how to use Option 2
         apDefectDraw = DefectDrawBuilder.instances()

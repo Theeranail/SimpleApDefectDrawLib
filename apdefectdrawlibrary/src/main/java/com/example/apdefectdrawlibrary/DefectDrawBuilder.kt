@@ -2,6 +2,7 @@ package com.example.apdefectdrawlibrary
 
 class DefectDrawBuilder {
     private var imagePath: String = ""
+    private var strokeWidth: Float = 2.0f;
     private var onDefectDrawListener: OnDefectDrawListener? = null
 
     companion object {
@@ -16,6 +17,11 @@ class DefectDrawBuilder {
         return this
     }
 
+    fun strokeWidth(strokeWidth: Float): DefectDrawBuilder {
+        this.strokeWidth = strokeWidth
+        return this
+    }
+
     fun defectDrawListener(onDefectDrawListener: OnDefectDrawListener): DefectDrawBuilder {
         this.onDefectDrawListener = onDefectDrawListener
         return this
@@ -23,6 +29,7 @@ class DefectDrawBuilder {
 
     fun build(apDefectDraw: APDefectDraw): APDefectDraw {
         apDefectDraw.imagePath = imagePath
+        apDefectDraw.strokeWidth = strokeWidth
         apDefectDraw.onDefectDrawListener = onDefectDrawListener
         return apDefectDraw.initViewImage()
     }
