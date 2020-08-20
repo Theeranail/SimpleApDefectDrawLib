@@ -2,7 +2,7 @@ package com.example.apdefectdrawlibrary
 
 class DefectDrawBuilder {
     private var imagePath: String = ""
-    private var strokeWidth: Float = 2.0f;
+    private var strokeWidth: Float = 2.0f
     private var onDefectDrawListener: OnDefectDrawListener? = null
 
     companion object {
