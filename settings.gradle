@@ -1,0 +1,3 @@
+include ':apdefectdrawlibrary'
+include ':app'
+rootProject.name = "SimpleAPDefectDrawLib"
