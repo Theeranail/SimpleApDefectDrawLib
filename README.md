@@ -58,6 +58,8 @@ override fun onSaveDraw(image: Bitmap?) {
 - strokeWidth:Float = ขนาดเส้นการวาด default 2.0
 - onDefectDrawListener:Interface = event สำหรับการ save
 - initViewImage() = สั่งให้แสดงรูปภาพที่ต้องการวาดทับ (ถ้าค้องการให้เรียกใช้คำสั่งนี้ทุกครั้ง)
+- isShowButtonSave(isShowButtonSave:Boolean) = ต้องการให้แสดงปุ่ม save หรือ ไม่
+- exportBitmap() = export รูปภาพออกเป็น bitmap function เดียวกันกับปุ่ม save
 		
 #### Support  Version
 - **Android Version(SDK) :  6.0 or later**
