@@ -55,7 +55,7 @@
             android:layout_weight="2"
             android:gravity="center">
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/btnColor"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
@@ -63,7 +63,7 @@
                 android:layout_marginRight="3dp"
                 android:background="@drawable/btn_radius">
 
-            </Button>
+            </android.widget.Button>
 
             <ImageButton
                 android:id="@+id/btnUndo"
