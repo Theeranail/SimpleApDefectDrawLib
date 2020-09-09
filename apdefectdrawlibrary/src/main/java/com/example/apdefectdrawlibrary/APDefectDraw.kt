@@ -1,8 +1,7 @@
 package com.example.apdefectdrawlibrary
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Color
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
@@ -67,6 +66,17 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
         drawView.clearCanvas()
     }
 
+    fun exportBitmap() {
+        this.save()
+    }
+
+    fun isShowButtonSave(isShow: Boolean) {
+        if (isShow)
+            containerBtnSave.visibility = View.VISIBLE
+        else
+            containerBtnSave.visibility = View.GONE
+    }
+
     private fun unDo() {
         drawView.undo()
     }
@@ -85,10 +95,9 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     }
 
     private fun setBackgroundColorButtonColor(color: Int) {
-        var buttonDrawable = btnColor.background
-        buttonDrawable = DrawableCompat.wrap(buttonDrawable)
-        DrawableCompat.setTint(buttonDrawable, color)
-        btnColor.background = buttonDrawable
+        val drawableBackground = resources.getDrawable(R.drawable.btn_radius, null)
+        drawableBackground.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
+        btnColor.background = drawableBackground
     }
 
     private fun selectColor() {

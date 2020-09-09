@@ -4,6 +4,7 @@ class DefectDrawBuilder {
     private var imagePath: String = ""
     private var strokeWidth: Float = 2.0f
     private var onDefectDrawListener: OnDefectDrawListener? = null
+    private var isShowButtonSave: Boolean = true;
 
     companion object {
         @JvmStatic
@@ -27,10 +28,16 @@ class DefectDrawBuilder {
         return this
     }
 
+    fun isShowButtonSave(isShowButtonSave: Boolean): DefectDrawBuilder {
+        this.isShowButtonSave = isShowButtonSave
+        return this
+    }
+
     fun build(apDefectDraw: APDefectDraw): APDefectDraw {
         apDefectDraw.imagePath = imagePath
         apDefectDraw.strokeWidth = strokeWidth
         apDefectDraw.onDefectDrawListener = onDefectDrawListener
+        apDefectDraw.isShowButtonSave(isShowButtonSave)
         return apDefectDraw.initViewImage()
     }
 }

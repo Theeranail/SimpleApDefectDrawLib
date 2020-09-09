@@ -61,8 +61,7 @@
                 android:layout_height="42dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="3dp"
-                android:background="@drawable/btn_radius"
-                android:backgroundTint="@color/colorRed">
+                android:background="@drawable/btn_radius">
 
             </Button>
 
@@ -89,6 +88,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/containerBtnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="5"
