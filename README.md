@@ -60,7 +60,13 @@ override fun onSaveDraw(image: Bitmap?) {
 - initViewImage() = สั่งให้แสดงรูปภาพที่ต้องการวาดทับ (ถ้าค้องการให้เรียกใช้คำสั่งนี้ทุกครั้ง)
 - isShowButtonSave(isShowButtonSave:Boolean) = ต้องการให้แสดงปุ่ม save หรือ ไม่
 - exportBitmap() = export รูปภาพออกเป็น bitmap function เดียวกันกับปุ่ม save
-		
+- isShowTools(isShow: Boolean) = สั่งให้แสดง tools หรือ ไม่แสดง true -> แสดง false -> ไม่แสดง
+- undo() = ตามชื่อ function
+- redo() = ตามชื่อ function
+- setColorStroke(color: Int) = ใส่สีเส้นวาด เป็น เช่น 0xFF000000
+- setStrokeWith(strokeWith: Float) = ใส่ขนาดเส้นวาด default 2.0
+- setBackgroundColorDraw(colorId: Int) = ใส่สี background เช่น R.color.color_white (กรณีใส่เป็นรูป(imagePath) function นี้จะไม่ทำงาน)
+
 #### Support  Version
 - **Android Version(SDK) :  6.0 or later**
 
