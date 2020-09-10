@@ -1,6 +1,7 @@
 package com.example.simpleapdefectdrawlib
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,10 +26,20 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
 
         //how to use Option 2
         apDefectDraw = DefectDrawBuilder.instances()
-            .imagePath("https://www.banidea.com/wp-content/uploads/2012/04/lower-floor-plan.jpg")
             .defectDrawListener(this)
             .isShowButtonSave(false)
+            .strokeWidth(5.0f)
+            .setStrokeColor(Color.RED)
+            .isShowTools(false)
             .build(defectDraw)
+
+        btnSaveS.setOnClickListener {
+            apDefectDraw.exportBitmap()
+        }
+
+        btnResetS.setOnClickListener {
+            apDefectDraw.reset()
+        }
 
     }
 
@@ -36,8 +47,6 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
         if (image != null) {
             Toast.makeText(this, "export image to Bitmap success", Toast.LENGTH_SHORT).show()
             apDefectDraw.reset()
-            defectDraw.visibility = View.GONE
-            imgView.visibility = View.VISIBLE
             Glide
                 .with(this)
                 .load(image)

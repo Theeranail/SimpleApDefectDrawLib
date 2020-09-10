@@ -9,19 +9,38 @@
     <com.example.apdefectdrawlibrary.APDefectDraw
         android:id="@+id/defectDraw"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="parent">
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </com.example.apdefectdrawlibrary.APDefectDraw>
+
+    <Button
+        android:id="@+id/btnSaveS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="save"
+        app:layout_constraintTop_toBottomOf="@+id/defectDraw">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btnResetS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveS"
+        tools:layout_editor_absoluteX="16dp">
+
+    </Button>
 
     <ImageView
         android:id="@+id/imgView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_height="0dp"
+        android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/btnResetS">
 
     </ImageView>
 

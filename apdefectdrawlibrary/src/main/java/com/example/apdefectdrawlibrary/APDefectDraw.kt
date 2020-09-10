@@ -8,7 +8,6 @@ import android.widget.FrameLayout
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.drawToBitmap
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
@@ -18,11 +17,12 @@ import kotlinx.android.synthetic.main.view_draw.view.*
 class APDefectDraw : FrameLayout, View.OnClickListener {
 
     private val colors = ColorConfig.colorList
-    private var colorSelected: Int = Color.BLACK
 
+    var strokeColor: Int = Color.BLACK
     var imagePath: String = ""
     var strokeWidth: Float = 2.0f
     var onDefectDrawListener: OnDefectDrawListener? = null
+    var backgroundColorId: Int = R.color.color_white
 
     constructor(@NonNull ctx: Context) : super(ctx) {
         this.setUpInit()
@@ -42,8 +42,8 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
 
     private fun setUpInit() {
         inflate(context, R.layout.view_draw, this)
-        drawView.setStrokeWidth(strokeWidth)
-        setBackgroundColorButtonColor(colorSelected)
+        setStrokeWith(strokeWidth)
+        setBackgroundColorButtonColor(strokeColor)
         btnUndo.setOnClickListener(this)
         btnReDo.setOnClickListener(this)
         btnSave.setOnClickListener(this)
@@ -57,8 +57,10 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
                 .load(this.imagePath)
                 .into(imgViewBackground)
         } else {
-            drawView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_white))
+            setBackgroundColorDraw(backgroundColorId)
         }
+        setBackgroundColorButtonColor(strokeColor)
+        setStrokeWith(strokeWidth)
         return this
     }
 
@@ -77,11 +79,35 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
             containerBtnSave.visibility = View.GONE
     }
 
-    private fun unDo() {
+    fun isShowTools(isShow: Boolean) {
+        if (isShow)
+            containerTools.visibility = View.VISIBLE
+        else
+            containerTools.visibility = View.GONE
+    }
+
+    fun setStrokeWith(strokeWith: Float) {
+        this.strokeWidth = strokeWith
+        drawView.setStrokeWidth(strokeWith)
+    }
+
+    fun setColorStroke(color: Int) {
+        strokeColor = color
+        setBackgroundColorButtonColor(color)
+    }
+
+    fun setBackgroundColorDraw(colorId: Int) {
+        if (!imagePath.isNotEmpty()) {
+            backgroundColorId = colorId
+            drawView.setBackgroundColor(ContextCompat.getColor(context, colorId))
+        }
+    }
+
+    fun undo() {
         drawView.undo()
     }
 
-    private fun reDo() {
+    fun redo() {
         drawView.redo()
     }
 
@@ -107,9 +133,9 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
                 colors = colors,
                 allowCustomArgb = true,
                 showAlphaSelector = true,
-                initialSelection = colorSelected
+                initialSelection = strokeColor
             ) { _, color ->
-                colorSelected = color
+                strokeColor = color
                 setNewColor(color)
                 setBackgroundColorButtonColor(color)
             }
@@ -120,8 +146,8 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.btnUndo -> this.unDo()
-            R.id.btnReDo -> this.reDo()
+            R.id.btnUndo -> this.undo()
+            R.id.btnReDo -> this.redo()
             R.id.btnSave -> this.save()
             R.id.btnColor -> this.selectColor()
         }
