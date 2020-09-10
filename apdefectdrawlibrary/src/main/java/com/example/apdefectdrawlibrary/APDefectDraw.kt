@@ -97,7 +97,7 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     }
 
     fun setBackgroundColorDraw(colorId: Int) {
-        if (!imagePath.isNotEmpty()) {
+        if (imagePath.isEmpty()) {
             backgroundColorId = colorId
             drawView.setBackgroundColor(ContextCompat.getColor(context, colorId))
         }
