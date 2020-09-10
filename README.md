@@ -65,7 +65,7 @@ override fun onSaveDraw(image: Bitmap?) {
 - redo() = ตามชื่อ function
 - setColorStroke(color: Int) = ใส่สีเส้นวาด เป็น เช่น 0xFF000000
 - setStrokeWith(strokeWith: Float) = ใส่ขนาดเส้นวาด default 2.0
-- setBackgroundColorDraw(colorId: Int) = ใส่สี background (กรณีใส่เป็นรูป(imagePath) function นี้จะไม่ทำงาน)
+- setBackgroundColorDraw(colorId: Int) = ใส่สี background เช่น R.color.color_white (กรณีใส่เป็นรูป(imagePath) function นี้จะไม่ทำงาน)
 
 #### Support  Version
 - **Android Version(SDK) :  6.0 or later**
