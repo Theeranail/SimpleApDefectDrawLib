@@ -3,6 +3,7 @@ package com.example.apdefectdrawlibrary
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.NonNull
@@ -110,6 +111,8 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     fun redo() {
         drawView.redo()
     }
+
+    fun isValidDraw(): Boolean = drawView.mPaths.isNotEmpty()
 
     private fun save() {
         val exportBM = containerDraw.drawToBitmap(Bitmap.Config.ARGB_8888)
