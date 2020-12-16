@@ -1,5 +1,6 @@
 # Drawing Library
-##### Last version : v1.0.5
+##### Last version : v1.0.6
+	-แสดงผลในแนวนนอน
 
 [SimpleApDefectDrawLib](https://github.com/Theeranail/SimpleApDefectDrawLib "SimpleApDefectDrawLib")  เป็น library ที่ใช้ในการวาดรูปสำหรับ AP Defect เพื่อให้ง่ายต่อการเรียกใช้งาน
 
