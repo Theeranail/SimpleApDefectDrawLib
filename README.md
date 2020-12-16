@@ -1,6 +1,7 @@
 # Drawing Library
-##### Last version : v1.0.6
+##### Last version : v1.0.7
 	-แสดงผลในแนวนนอน
+	-แก้ใข bug export bitmap error View needs to be laid out before calling
 
 [SimpleApDefectDrawLib](https://github.com/Theeranail/SimpleApDefectDrawLib "SimpleApDefectDrawLib")  เป็น library ที่ใช้ในการวาดรูปสำหรับ AP Defect เพื่อให้ง่ายต่อการเรียกใช้งาน
 
