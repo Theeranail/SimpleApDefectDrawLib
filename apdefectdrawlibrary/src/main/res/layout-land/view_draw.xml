@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_toStartOf="@+id/containerTools"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <FrameLayout
+            android:id="@+id/containerDraw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgViewBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_image_view"
+                android:padding="5dp"></ImageView>
+
+            <com.divyanshu.draw.widget.DrawView
+                android:id="@+id/drawView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/containerTools"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <android.widget.Button
+                android:id="@+id/btnColor"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/btn_radius">
+
+            </android.widget.Button>
+
+            <ImageButton
+                android:id="@+id/btnUndo"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/btn_radius"
+                android:src="@drawable/ic_baseline_undo_24"></ImageButton>
+
+            <ImageButton
+                android:id="@+id/btnReDo"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/btn_radius"
+                android:src="@drawable/ic_baseline_redo_24">
+
+            </ImageButton>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containerBtnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center|bottom">
+
+            <ImageButton
+                android:id="@+id/btnSave"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/btn_radius"
+                android:src="@drawable/ic_baseline_save_24">
+
+            </ImageButton>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

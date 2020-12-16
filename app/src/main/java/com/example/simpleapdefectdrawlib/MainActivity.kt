@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -14,9 +15,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnDefectDrawListener {
     lateinit var apDefectDraw: APDefectDraw
+    private var lastOrientation = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (savedInstanceState == null) {
+            lastOrientation = resources.configuration.orientation
+            Log.e("MainActivity","lastOrientation -> ${lastOrientation}")
+        }
 
         //how to use Option 1
 //        defectDraw.imagePath =
@@ -27,10 +34,10 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
         //how to use Option 2
         apDefectDraw = DefectDrawBuilder.instances()
             .defectDrawListener(this)
-            .isShowButtonSave(false)
+            .isShowButtonSave(true)
             .strokeWidth(5.0f)
             .setStrokeColor(Color.RED)
-            .isShowTools(false)
+            .isShowTools(true)
             .build(defectDraw)
 
         btnSaveS.setOnClickListener {
@@ -40,6 +47,12 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
         btnResetS.setOnClickListener {
             apDefectDraw.reset()
         }
+
+    }
+
+    override fun onStart() {
+        Log.e("MainActivity","onStart lastOrientation -> ${lastOrientation}")
+        super.onStart()
 
     }
 
