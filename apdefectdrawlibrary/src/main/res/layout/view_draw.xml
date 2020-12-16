@@ -16,14 +16,15 @@
         <FrameLayout
             android:id="@+id/containerDraw"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:clipChildren="true">
 
+            <!-- android:background="@drawable/background_image_view"-->
 
             <ImageView
                 android:id="@+id/imgViewBackground"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_image_view"
                 android:padding="5dp"></ImageView>
 
             <com.divyanshu.draw.widget.DrawView

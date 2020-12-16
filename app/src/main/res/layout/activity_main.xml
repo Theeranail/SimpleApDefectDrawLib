@@ -9,7 +9,7 @@
     <com.example.apdefectdrawlibrary.APDefectDraw
         android:id="@+id/defectDraw"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -34,14 +34,21 @@
 
     </Button>
 
-    <ImageView
-        android:id="@+id/imgView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/btnResetS">
 
-    </ImageView>
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_launcher">
+
+        </ImageView>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

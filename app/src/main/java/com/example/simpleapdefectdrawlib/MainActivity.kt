@@ -34,10 +34,11 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
         //how to use Option 2
         apDefectDraw = DefectDrawBuilder.instances()
             .defectDrawListener(this)
-            .isShowButtonSave(true)
+            .isShowButtonSave(false)
             .strokeWidth(5.0f)
             .setStrokeColor(Color.RED)
-            .isShowTools(true)
+            .isShowTools(false)
+            .imagePath("https://cdn-cms.pgimgs.com/static/2017/07/8-03-4-1024x989-1024x989.jpg")
             .build(defectDraw)
 
         btnSaveS.setOnClickListener {

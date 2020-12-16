@@ -9,7 +9,6 @@ import android.widget.FrameLayout
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
-import androidx.core.view.drawToBitmap
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
 import com.bumptech.glide.Glide
@@ -115,8 +114,24 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     fun isValidDraw(): Boolean = drawView.mPaths.isNotEmpty()
 
     private fun save() {
-        val exportBM = containerDraw.drawToBitmap(Bitmap.Config.ARGB_8888)
-        onDefectDrawListener?.onSaveDraw(exportBM)
+
+        val nBitmap = Bitmap.createBitmap(
+            containerDraw.measuredWidth,
+            containerDraw.measuredHeight,
+            Bitmap.Config.ARGB_8888
+        )
+
+        val canvas = Canvas(nBitmap)
+
+        containerDraw.layout(
+            containerDraw.left,
+            containerDraw.top,
+            containerDraw.right,
+            containerDraw.bottom
+        )
+        containerDraw.draw(canvas)
+//        val exportBM = containerDraw.drawToBitmap(Bitmap.Config.ARGB_8888)
+        onDefectDrawListener?.onSaveDraw(nBitmap)
     }
 
     private fun setNewColor(color: Int) {
