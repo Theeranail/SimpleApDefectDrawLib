@@ -15,6 +15,16 @@
 
     </com.example.apdefectdrawlibrary.APDefectDraw>
 
+    <com.example.apdefectdrawlibrary.APDefectDrawText
+        android:id="@+id/defectDrawText"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.example.apdefectdrawlibrary.APDefectDrawText>
+
     <Button
         android:id="@+id/btnSaveS"
         android:layout_width="match_parent"
@@ -43,8 +53,8 @@
 
         <ImageView
             android:id="@+id/imgView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="280dp"
+            android:layout_height="150dp"
             android:layout_centerInParent="true"
             android:src="@mipmap/ic_launcher">
 

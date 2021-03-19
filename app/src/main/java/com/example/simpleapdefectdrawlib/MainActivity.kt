@@ -31,18 +31,21 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
 //        defectDraw.onDefectDrawListener = this
 //        defectDraw.initViewImage();
 
-        //how to use Option 2
+        //how to use Option 2              .imagePath("https://cdn-cms.pgimgs.com/static/2017/07/8-03-4-1024x989-1024x989.jpg")
         apDefectDraw = DefectDrawBuilder.instances()
             .defectDrawListener(this)
             .isShowButtonSave(false)
             .strokeWidth(5.0f)
             .setStrokeColor(Color.RED)
             .isShowTools(false)
-            .imagePath("https://cdn-cms.pgimgs.com/static/2017/07/8-03-4-1024x989-1024x989.jpg")
+            .setBackgroundColor(android.R.color.transparent)
             .build(defectDraw)
+
+        defectDrawText.onDefectDrawListener = this
 
         btnSaveS.setOnClickListener {
             apDefectDraw.exportBitmap()
+//            defectDrawText.exportBitmap()
         }
 
         btnResetS.setOnClickListener {
@@ -52,7 +55,7 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
     }
 
     override fun onStart() {
-        Log.e("MainActivity","onStart lastOrientation -> ${lastOrientation}")
+        Log.e("MainActivity","onStart lastOrientation -> $lastOrientation")
         super.onStart()
 
     }

@@ -3,7 +3,6 @@ package com.example.apdefectdrawlibrary
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.NonNull
@@ -114,7 +113,7 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     fun isValidDraw(): Boolean = drawView.mPaths.isNotEmpty()
 
     private fun save() {
-
+        var bitmap: Bitmap
         val nBitmap = Bitmap.createBitmap(
             containerDraw.measuredWidth,
             containerDraw.measuredHeight,
@@ -131,7 +130,12 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
         )
         containerDraw.draw(canvas)
 //        val exportBM = containerDraw.drawToBitmap(Bitmap.Config.ARGB_8888)
-        onDefectDrawListener?.onSaveDraw(nBitmap)
+
+        val paint = Paint()
+        paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+        canvas.drawBitmap(nBitmap, 0.0f, 0.0f, paint)
+        bitmap = nBitmap
+        onDefectDrawListener?.onSaveDraw(bitmap)
     }
 
     private fun setNewColor(color: Int) {

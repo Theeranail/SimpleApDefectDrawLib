@@ -13,6 +13,7 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp">
 
+
         <FrameLayout
             android:id="@+id/containerDraw"
             android:layout_width="match_parent"
