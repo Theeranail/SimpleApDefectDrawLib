@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
 import com.bumptech.glide.Glide
@@ -113,7 +114,7 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     fun isValidDraw(): Boolean = drawView.mPaths.isNotEmpty()
 
     private fun save() {
-        var bitmap: Bitmap
+        val bitmap: Bitmap
         val nBitmap = Bitmap.createBitmap(
             containerDraw.measuredWidth,
             containerDraw.measuredHeight,
@@ -143,8 +144,8 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     }
 
     private fun setBackgroundColorButtonColor(color: Int) {
-        val drawableBackground = resources.getDrawable(R.drawable.btn_radius, null)
-        drawableBackground.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
+        val drawableBackground = ResourcesCompat.getDrawable(resources,R.drawable.btn_radius, null)
+        drawableBackground?.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
         btnColor.background = drawableBackground
     }
 
