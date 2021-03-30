@@ -93,6 +93,7 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
 
     fun setColorStroke(color: Int) {
         strokeColor = color
+        setNewColor(strokeColor)
         setBackgroundColorButtonColor(color)
     }
 

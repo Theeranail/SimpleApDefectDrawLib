@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
             .defectDrawListener(this)
             .isShowButtonSave(false)
             .strokeWidth(5.0f)
-            .setStrokeColor(Color.BLACK)
+            .setStrokeColor(Color.RED)
             .isShowTools(true)
             .setBackgroundColor(android.R.color.transparent)
             .build(defectDraw)
