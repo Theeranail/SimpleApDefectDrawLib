@@ -1,6 +1,6 @@
 # Drawing Library
-##### Last version : v1.0.8
-	-fix bug set background color button tools
+##### Last version : v1.0.9
+	-fix bug set stock color
 
 [SimpleApDefectDrawLib](https://github.com/Theeranail/SimpleApDefectDrawLib "SimpleApDefectDrawLib")  เป็น library ที่ใช้ในการวาดรูปสำหรับ AP Defect เพื่อให้ง่ายต่อการเรียกใช้งาน
 
