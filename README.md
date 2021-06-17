@@ -1,6 +1,6 @@
 # Drawing Library
-##### Last version : v1.0.9
-	-fix bug set stock color
+##### Last version : 1.0.10
+	-fix performance code. remove JCenter() and update kotlin version and fix deprecated class kotlin extension  
 
 [SimpleApDefectDrawLib](https://github.com/Theeranail/SimpleApDefectDrawLib "SimpleApDefectDrawLib")  เป็น library ที่ใช้ในการวาดรูปสำหรับ AP Defect เพื่อให้ง่ายต่อการเรียกใช้งาน
 
