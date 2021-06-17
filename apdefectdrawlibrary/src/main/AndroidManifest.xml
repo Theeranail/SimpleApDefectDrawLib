@@ -1,5 +1,2 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.apdefectdrawlibrary">
-
-    /
+<manifest package="com.example.apdefectdrawlibrary">
 </manifest>

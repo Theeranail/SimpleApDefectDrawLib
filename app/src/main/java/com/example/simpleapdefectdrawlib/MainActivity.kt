@@ -5,24 +5,25 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.apdefectdrawlibrary.APDefectDraw
 import com.example.apdefectdrawlibrary.DefectDrawBuilder
 import com.example.apdefectdrawlibrary.OnDefectDrawListener
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.simpleapdefectdrawlib.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), OnDefectDrawListener {
-    lateinit var apDefectDraw: APDefectDraw
+    private lateinit var apDefectDraw: APDefectDraw
     private var lastOrientation = 0
+    private lateinit var vBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        this.vBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(this.vBinding.root)
 
         if (savedInstanceState == null) {
             lastOrientation = resources.configuration.orientation
-            Log.e("MainActivity","lastOrientation -> ${lastOrientation}")
+            Log.e("MainActivity", "lastOrientation -> ${lastOrientation}")
         }
 
         //how to use Option 1
@@ -39,23 +40,23 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
             .setStrokeColor(Color.RED)
             .isShowTools(true)
             .setBackgroundColor(android.R.color.transparent)
-            .build(defectDraw)
+            .build(vBinding.defectDraw)
 
-        defectDrawText.onDefectDrawListener = this
+        vBinding.defectDrawText.onDefectDrawListener = this
 
-        btnSaveS.setOnClickListener {
+        vBinding.btnSaveS.setOnClickListener {
             apDefectDraw.exportBitmap()
 //            defectDrawText.exportBitmap()
         }
 
-        btnResetS.setOnClickListener {
+        vBinding.btnResetS.setOnClickListener {
             apDefectDraw.reset()
         }
 
     }
 
     override fun onStart() {
-        Log.e("MainActivity","onStart lastOrientation -> $lastOrientation")
+        Log.e("MainActivity", "onStart lastOrientation -> $lastOrientation")
         super.onStart()
 
     }
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity(), OnDefectDrawListener {
             Glide
                 .with(this)
                 .load(image)
-                .into(imgView);
+                .into(vBinding.imgView)
         } else {
             Toast.makeText(this, "export image to Bitmap Invalid", Toast.LENGTH_SHORT).show()
         }

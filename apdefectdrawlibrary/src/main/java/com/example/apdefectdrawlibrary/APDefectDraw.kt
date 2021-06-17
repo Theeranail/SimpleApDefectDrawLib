@@ -3,6 +3,7 @@ package com.example.apdefectdrawlibrary
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.NonNull
@@ -12,9 +13,11 @@ import androidx.core.content.res.ResourcesCompat
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.view_draw.view.*
+import com.example.apdefectdrawlibrary.databinding.ViewDrawBinding
 
 class APDefectDraw : FrameLayout, View.OnClickListener {
+
+    private lateinit var contentView: ViewDrawBinding
 
     private val colors = ColorConfig.colorList
 
@@ -41,13 +44,14 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     }
 
     private fun setUpInit() {
-        inflate(context, R.layout.view_draw, this)
+        contentView = ViewDrawBinding.inflate(LayoutInflater.from(context))
+        addView(contentView.root)
         setStrokeWith(strokeWidth)
         setBackgroundColorButtonColor(strokeColor)
-        btnUndo.setOnClickListener(this)
-        btnReDo.setOnClickListener(this)
-        btnSave.setOnClickListener(this)
-        btnColor.setOnClickListener(this)
+        contentView.btnUndo.setOnClickListener(this)
+        contentView.btnReDo.setOnClickListener(this)
+        contentView.btnSave.setOnClickListener(this)
+        contentView.btnColor.setOnClickListener(this)
     }
 
     fun initViewImage(): APDefectDraw {
@@ -55,7 +59,7 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
             Glide
                 .with(context)
                 .load(this.imagePath)
-                .into(imgViewBackground)
+                .into(contentView.imgViewBackground)
         } else {
             setBackgroundColorDraw(backgroundColorId)
         }
@@ -65,7 +69,7 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     }
 
     fun reset() {
-        drawView.clearCanvas()
+        contentView.drawView.clearCanvas()
     }
 
     fun exportBitmap() {
@@ -74,21 +78,21 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
 
     fun isShowButtonSave(isShow: Boolean) {
         if (isShow)
-            containerBtnSave.visibility = View.VISIBLE
+            contentView.containerBtnSave.visibility = View.VISIBLE
         else
-            containerBtnSave.visibility = View.GONE
+            contentView.containerBtnSave.visibility = View.GONE
     }
 
     fun isShowTools(isShow: Boolean) {
         if (isShow)
-            containerTools.visibility = View.VISIBLE
+            contentView.containerTools.visibility = View.VISIBLE
         else
-            containerTools.visibility = View.GONE
+            contentView.containerTools.visibility = View.GONE
     }
 
     fun setStrokeWith(strokeWith: Float) {
         this.strokeWidth = strokeWith
-        drawView.setStrokeWidth(strokeWith)
+        contentView.drawView.setStrokeWidth(strokeWith)
     }
 
     fun setColorStroke(color: Int) {
@@ -100,54 +104,55 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     fun setBackgroundColorDraw(colorId: Int) {
         if (imagePath.isEmpty()) {
             backgroundColorId = colorId
-            drawView.setBackgroundColor(ContextCompat.getColor(context, colorId))
+            contentView.drawView.setBackgroundColor(ContextCompat.getColor(context, colorId))
         }
     }
 
     fun undo() {
-        drawView.undo()
+        contentView.drawView.undo()
     }
 
     fun redo() {
-        drawView.redo()
+        contentView.drawView.redo()
     }
 
-    fun isValidDraw(): Boolean = drawView.mPaths.isNotEmpty()
+    fun isValidDraw(): Boolean = contentView.drawView.mPaths.isNotEmpty()
 
     private fun save() {
         val bitmap: Bitmap
         val nBitmap = Bitmap.createBitmap(
-            containerDraw.measuredWidth,
-            containerDraw.measuredHeight,
+            contentView.containerDraw.measuredWidth,
+            contentView.containerDraw.measuredHeight,
             Bitmap.Config.ARGB_8888
         )
 
         val canvas = Canvas(nBitmap)
 
-        containerDraw.layout(
-            containerDraw.left,
-            containerDraw.top,
-            containerDraw.right,
-            containerDraw.bottom
+        contentView.containerDraw.layout(
+            contentView.containerDraw.left,
+            contentView.containerDraw.top,
+            contentView.containerDraw.right,
+            contentView.containerDraw.bottom
         )
-        containerDraw.draw(canvas)
+        contentView.containerDraw.draw(canvas)
 //        val exportBM = containerDraw.drawToBitmap(Bitmap.Config.ARGB_8888)
 
         val paint = Paint()
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+        paint.isAntiAlias = true
         canvas.drawBitmap(nBitmap, 0.0f, 0.0f, paint)
         bitmap = nBitmap
         onDefectDrawListener?.onSaveDraw(bitmap)
     }
 
     private fun setNewColor(color: Int) {
-        drawView.setColor(color)
+        contentView.drawView.setColor(color)
     }
 
     private fun setBackgroundColorButtonColor(color: Int) {
         val drawableBackground = ResourcesCompat.getDrawable(resources,R.drawable.btn_radius, null)
         drawableBackground?.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
-        btnColor.background = drawableBackground
+        contentView.btnColor.background = drawableBackground
     }
 
     private fun selectColor() {

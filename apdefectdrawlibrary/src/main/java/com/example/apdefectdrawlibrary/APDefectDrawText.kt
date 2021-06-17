@@ -3,7 +3,6 @@ package com.example.apdefectdrawlibrary
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.NonNull
@@ -69,14 +68,13 @@ class APDefectDrawText : View, View.OnClickListener {
                 path.lineTo(x, y)
 
                     val nBitmap =
-                        Bitmap.createBitmap(bitmap!!.width, bitmap!!.height, bitmap!!.config)
+                        Bitmap.createBitmap(bitmap.width, bitmap.height, bitmap.config)
                     val canvas = Canvas(nBitmap)
                     val nPaint = Paint()
                     canvas.drawPath(path, nPaint)
                     nPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-                    canvas.drawBitmap(bitmap!!, 0.0f, 0.0f, nPaint)
+                    canvas.drawBitmap(bitmap, 0.0f, 0.0f, nPaint)
                     bitmap = nBitmap
-                    Log.e("APLIB", "image not null")
                     onDefectDrawListener?.onSaveDraw(bitmap)
                     invalidate()
 
@@ -88,16 +86,13 @@ class APDefectDrawText : View, View.OnClickListener {
 
 
     fun exportBitmap() {
-        if (bitmap != null) {
-            val nBitmap = Bitmap.createBitmap(bitmap!!.width, bitmap!!.height, bitmap!!.config)
-            val canvas = Canvas()
-            val nPaint = Paint()
-            canvas.drawPath(path, nPaint)
-            nPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-            canvas.drawBitmap(bitmap!!, 0.0f, 0.0f, nPaint)
+        Bitmap.createBitmap(bitmap.width, bitmap.height, bitmap.config)
+        val canvas = Canvas()
+        val nPaint = Paint()
+        canvas.drawPath(path, nPaint)
+        nPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+        canvas.drawBitmap(bitmap, 0.0f, 0.0f, nPaint)
 //            bitmap = nBitmap
-            Log.e("APLIB", "image not null")
-        }
         onDefectDrawListener?.onSaveDraw(bitmap)
         invalidate()
     }
