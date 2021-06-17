@@ -49,7 +49,7 @@ dependencies {
 
 //    implementation project(':apdefectdrawlibrary')
 
-    implementation 'com.github.Theeranail:SimpleApDefectDrawLib:master'
+    implementation 'com.github.Theeranail:SimpleApDefectDrawLib:1.0.10'
 
 
 
