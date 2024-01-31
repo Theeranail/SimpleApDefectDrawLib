@@ -1,13 +1,12 @@
 package com.example.apdefectdrawlibrary
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.afollestad.materialdialogs.MaterialDialog
@@ -27,15 +26,15 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
     var onDefectDrawListener: OnDefectDrawListener? = null
     var backgroundColorId: Int = R.color.color_white
 
-    constructor(@NonNull ctx: Context) : super(ctx) {
+    constructor(ctx: Context) : super(ctx) {
         this.setUpInit()
     }
 
-    constructor(@NonNull ctx: Context, @Nullable attrs: AttributeSet) : super(ctx, attrs) {
+    constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs) {
         this.setUpInit()
     }
 
-    constructor(@NonNull ctx: Context, @Nullable attrs: AttributeSet, defStyleAttr: Int) : super(
+    constructor(ctx: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
         ctx,
         attrs,
         defStyleAttr
@@ -155,6 +154,7 @@ class APDefectDraw : FrameLayout, View.OnClickListener {
         contentView.btnColor.background = drawableBackground
     }
 
+    @SuppressLint("CheckResult")
     private fun selectColor() {
         MaterialDialog(context).show {
             title(R.string.title_dialog_color)

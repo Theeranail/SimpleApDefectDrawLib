@@ -1,19 +1,17 @@
 package com.example.apdefectdrawlibrary
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 
 class APDefectDrawText : View, View.OnClickListener {
 
     private lateinit var bitmap: Bitmap
     private var path: Path = Path()
     private lateinit var paint: Paint
-
 
     var strokeColor: Int = Color.BLACK
     var strokeWidth: Float = 20.0f
@@ -22,15 +20,15 @@ class APDefectDrawText : View, View.OnClickListener {
     override fun onClick(v: View?) {
     }
 
-    constructor(@NonNull ctx: Context) : super(ctx) {
+    constructor(ctx: Context) : super(ctx) {
         this.setUpInit()
     }
 
-    constructor(@NonNull ctx: Context, @Nullable attrs: AttributeSet) : super(ctx, attrs) {
+    constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs) {
         this.setUpInit()
     }
 
-    constructor(@NonNull ctx: Context, @Nullable attrs: AttributeSet, defStyleAttr: Int) : super(
+    constructor(ctx: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
         ctx,
         attrs,
         defStyleAttr
@@ -46,13 +44,14 @@ class APDefectDrawText : View, View.OnClickListener {
         paint.strokeWidth = strokeWidth
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas?.drawBitmap(bitmap, 0.0f, 0.0f, null)
-        canvas?.drawPath(path, paint)
+        canvas.drawBitmap(bitmap, 0.0f, 0.0f, null)
+        canvas.drawPath(path, paint)
 
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val x = event!!.x
         val y = event.y
